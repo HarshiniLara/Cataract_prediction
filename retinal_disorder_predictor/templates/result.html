@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/css/app.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+        <title>Results</title>
+    </head>
+    <body>
+        <div class="App">
+            <div class="navbar">
+                <div class="title">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>Netra Ikshana</span>
+                </div>
+                <div class="menubar">
+                    <ul>
+                        <li><a href ="/">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="predictor">
+            <div class="result">
+                <span>Results</span>
+                <hr></hr>
+                <span>Uploaded image</span>
+                <div>
+                    <img src={{url_for('static', filename = '../static/images/'+ img)}} height="250px" width="250px">
+                    <span>
+                        <table tableborder="1">
+                            <tr>
+                                <th>Predicted Retinal disorder</th>
+                                <th>Probability percentage</th>
+                                <th>Prevention measures</th>
+                            </tr>
+                            <tr>
+                                <td>{{ predictions.class }}</td>
+                                <td>{{ predictions.prob }} %</td>
+                                <td>{{ predictions.prev }}</td>
+                            </tr>
+                        </table>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

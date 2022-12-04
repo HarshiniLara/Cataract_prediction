@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/css/app.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+        <title>Retinal disorder predictor</title>
+        <meta name="keywords" content="cutom file input, styling, label, cross-browser, accessible, input type file" />
+    </head>
+    <body>
+        <div class="App">
+            <div class="navbar">
+                <div class="title">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>Netra Ikshana</span>
+                </div>
+            </div>
+            <div class="predictor">
+                <div class="instructions">
+                    <span>
+                        About
+                    </span>
+                    <hr></hr>
+                    <div class="abt">
+                        <p>
+                            Retinal disorder predictor application here! 👀 where you can upload images of your retina and get the predicted results.
+                        </p>
+                        <img src="https://tse4.mm.bing.net/th?id=OIP.H3yJWjVTd_yeVXttx8amzwHaFC&pid=Api&P=0" height="200px" width="200px" >
+                    </div>
+                    <div class="abt">
+                        <img src="https://www.rebuildyourvision.com/wp-content/uploads/2014/06/Eyeball-Carrot-3.jpg" height="200px" width="200px" >
+                        <p>
+                            Get to know the results and measures including dietary plans to prevent them as well. Get started by uploading your retinal image...
+                        </p>
+                    </div>
+                </div>
+                <form class = "file-form" action="/result" method="post", enctype="multipart/form-data">
+                    <div class="loadData">
+                        <span>Retinal disorder predictor</span>
+                        <hr></hr>
+                        <span>Load the retinal image...</span>
+                        <input type="file" , name = "file"/>
+                        <button>Upload</button>
+                        <p>{{error}}</p>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </body>
+</html>
