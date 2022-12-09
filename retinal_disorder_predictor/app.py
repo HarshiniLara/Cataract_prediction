@@ -7,6 +7,9 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from flask import Flask , render_template  , request , send_file
 from tensorflow.keras.preprocessing.image import img_to_array
+import pyttsx3
+
+
 
 app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -21,8 +24,9 @@ def allowed_file(filename):
 image_size = 224
 prevention = {
     "normal": "You are healthy.",
-    "cataract": "Have a consistently healthy diet that includes fruits, vegetables, oily fish and whole grains. Stay away from UV radiation. Stop smoking. Control your blood sugar. Avoid the unnecessary use of steroids. Sunglasses can also help cut your risk of getting cataracts. Get regular eye checkup"
+    "cataract": "You are affected by Cataract. Have a consistently healthy diet that includes fruits, vegetables, oily fish and whole grains. Stay away from UV radiation. Stop smoking. Control your blood sugar. Avoid the unnecessary use of steroids. Sunglasses can also help cut your risk of getting cataracts. Get regular eye checkup"
 }
+
 def predictResult(filename , model):
     img = cv2.imread(filename)
     img = cv2.resize(img,(image_size,image_size))
@@ -44,14 +48,13 @@ def predictResult(filename , model):
     prob = round(res[0]*100, 2)
 
     return result, prob, prev
-
-
-
-
+def speech(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
 @app.route('/')
 def home():
         return render_template("home.html")
-
 @app.route('/result' , methods = ['GET' , 'POST'])
 def result():
     error = ''
@@ -69,17 +72,16 @@ def result():
                 predictions = {
                     "class":result,
                     "prob": prob,
-                    "prev": prev
+                    "prev": prev,
                 }
 
             else:
                 error = "Please upload images of jpg extension only"
 
             if(len(error) == 0):
-                return  render_template('result.html' , img  = img , predictions = predictions)
+                return render_template('result.html' , img  = img , predictions = predictions, func = speech(prev))
             else:
                 return render_template('home.html' , error = error)
-
     else:
         return render_template('home.html')
 
