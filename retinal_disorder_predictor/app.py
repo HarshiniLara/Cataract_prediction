@@ -24,7 +24,7 @@ def allowed_file(filename):
 image_size = 224
 prevention = {
     "normal": "You are healthy.",
-    "cataract": "You are affected by Cataract. Have a consistently healthy diet that includes fruits, vegetables, oily fish and whole grains. Stay away from UV radiation. Stop smoking. Control your blood sugar. Avoid the unnecessary use of steroids. Sunglasses can also help cut your risk of getting cataracts. Get regular eye checkup"
+    "cataract": "You are affected by Cataract. Have a consistently healthy diet that includes fruits, vegetables, oily fish and whole grains. Stay away from UV radiation. Stop smoking. Control your blood sugar. Avoid the unnecessary use of steroids. Sunglasses can also help cut your risk of getting cataracts. Get regular eye checkup."
 }
 
 def predictResult(filename , model):
